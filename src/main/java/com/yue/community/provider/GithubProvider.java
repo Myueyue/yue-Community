@@ -5,9 +5,6 @@ import com.yue.community.dto.GithubUser;
 import okhttp3.*;
 import org.springframework.stereotype.Component;
 
-/**
- * Created by codedrinker on 2019/4/24.
- */
 @Component
 
 public class GithubProvider {
@@ -22,7 +19,6 @@ public class GithubProvider {
                 .build();
         try (Response response = client.newCall(request).execute()) {
             String string = response.body().string();
-            System.err.println("-------------<><><><><><>"+string);
             String token = string.split("&")[0].split("=")[1];
             return token;
         } catch (Exception e) {
